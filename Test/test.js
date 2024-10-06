@@ -1,45 +1,27 @@
-const { Builder, By, Key } = require('selenium-webdriver');
+const { Builder } = require('selenium-webdriver');
+const SearchPage = require('../PageObject/searchpage');
+const TestData = require('../setvariabel');
 
-// Initialize the WebDriver
-let driver = new Builder().forBrowser('chrome').build();
 
-async function setValueForElement() {
-    const targetText = 'Montbell Trail Wallet';
-    const productsearch= 'dompet'
+async function SeleniumWebTest() {
+    const driver = new Builder().forBrowser('chrome').build();
+    const {targetproduct, baseurl, productsearch}=TestData;
+    const searchPage = new SearchPage(driver);
+
     try {
-        // Navigate to the Tokopedia website
-        await driver.get('https://www.tokopedia.com');
-        
+        // Navigate to the Tokopedia website and perform the search
+        await searchPage.open(baseurl);
+        await searchPage.searchForProduct(productsearch);
 
-        let searchElement = await driver.findElement(By.css('[data-unify="Search"]'));
-        await searchElement.sendKeys(productsearch, Key.RETURN);
-
-        await driver.sleep(2000);
-
-        
-
-        // Fungsi untuk scroll dan menemukan teks
-        let found = false;
-        while (!found) {
-            // Mencari elemen dengan teks target
-            const elements = await driver.findElements(By.xpath(`//*[contains(text(), "${targetText}")]`));
-            if (elements.length > 0) {
-                // Jika elemen ditemukan, klik dan keluar dari loop
-                await elements[0].click();
-                found = true;
-            } else {
-                // Jika elemen tidak ditemukan, scroll ke bawah
-                await driver.executeScript('window.scrollBy(0, window.innerHeight);');
-                await driver.sleep(1000); // Tunggu sebentar sebelum scroll lagi
-            }
-        }
+        // Scroll and find the product by text
+        await searchPage.findProductByText(targetproduct);
     } catch (error) {
         console.error('Error:', error);
     } finally {
-        // Close the browser after use
+        // Close the browser after the test
         await driver.sleep(5000);
         await driver.quit();
     }
 }
 
-setValueForElement();
+SeleniumWebTest();
