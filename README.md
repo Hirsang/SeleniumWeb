@@ -17,7 +17,7 @@ npm install selenium-webdriver
 To use Selenium with a specific browser, you’ll also need to install the corresponding browser driver.
 
 
-The absence of the node_modules/chromedriver/bin/ directory indicates that chromedriver is not installed as a local dependency in your project. Let's go through the steps to ensure everything is set up correctly.
+if The absence of the node_modules/chromedriver/bin/ directory indicates that chromedriver is not installed as a local dependency in your project. Let's go through the steps to ensure everything is set up correctly.
 
 Steps to Install ChromeDriver and Verify Versions
 
