@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "node /Users/hirsang/Documents/WebAutomation/SeleniumWeb/Test/test.js"
+    "test": "node Test/test.js"
   },
   "keywords": [],
   "author": "",
