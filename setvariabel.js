@@ -3,7 +3,7 @@
 const TestData={
     baseurl:'https://www.tokopedia.com',
     productsearch : 'dompet',
-    targetproduct : 'Montbell Trail Wallet',
+    targetproduct : 'JFR Fashion Dompet Pria Bahan Kulit Canvas JP07',
 }
 
 
