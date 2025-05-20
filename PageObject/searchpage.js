@@ -1,4 +1,4 @@
-const { By, Key } = require('selenium-webdriver');
+const { By, Key} = require('selenium-webdriver');
 
 class SearchPage {
     constructor(driver) {
@@ -7,7 +7,10 @@ class SearchPage {
     }
 
     async open(url) {
+        await this.driver.manage().window().maximize();
         await this.driver.get(url);
+        await this.driver.sleep(5000);
+        await this.driver.findElement(By.css('.css-11hzwo5')).click();
     }
 
     async searchForProduct(productsearch) {
